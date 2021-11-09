@@ -3,6 +3,7 @@ from torch import nn
 import torch.nn.functional as F
 import math
 
+# Cosine Marginal loss
 class AddMarginProduct(nn.Module):
     """Implement of large margin cosine distance: :
     Args:
@@ -47,6 +48,7 @@ class AddMarginProduct(nn.Module):
                + ', s=' + str(self.s) \
                + ', m=' + str(self.m) + ')'
 
+# Arc Marginal loss
 class ArcMarginProduct(nn.Module):
     def __init__(self, in_feature, out_feature, s=32.0, m=0.40, easy_margin=False):
         super(ArcMarginProduct, self).__init__()
@@ -96,7 +98,7 @@ class ArcMarginProduct(nn.Module):
                + ', s=' + str(self.s) \
                + ', m=' + str(self.m) + ')'
     
-    
+# Main Model
 class ClasModel(nn.Module):
     def __init__(self,in_features,out_features=10,n_layers=3,latent_features=3,hidden_featrues=64,mode="cos",s=30,m=0.1, easy_margin=False):
         super().__init__()
